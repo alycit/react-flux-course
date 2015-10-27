@@ -1,0 +1,48 @@
+<html>
+<head>
+  <title>React Course</title>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5 target">
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/jsx">
+  var Badge = React.createClass({
+    render: function() {
+      return <button className="btn btn-primary" type="button">
+        {this.props.title} <span className="badge">{this.props.number}</span>
+      </button>
+    }
+  });
+
+  var Thumbnail = React.createClass({
+    render: function(){
+      return  <div className="thumbnail">
+        <img src={this.props.imgUrl} />
+        <div className="caption">
+          <h3>{this.props.header}</h3>
+          <p>{this.props.description}</p>
+          <p><Badge title={this.props.title} number={this.props.number} /></p>
+        </div>
+      </div>
+    }
+  });
+
+  var options = {
+    header: "Learn React",
+    description: "The quick brown fox jumps over the lazy brown dog.",
+    imgUrl: "http://red-badger.com/blog/wp-content/uploads/2015/04/react-logo-1000-transparent.png",
+    title: "See Tutorials",
+    number: 32
+  }
+  var element = React.createElement(Thumbnail, options);
+  React.render(element, document.querySelector('.target'));
+</script>
+</html>
